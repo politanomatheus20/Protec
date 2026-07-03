@@ -59,17 +59,44 @@ document.addEventListener('click', (e) => {
 });
 
 // =============================================
-// SMOOTH NAVIGATION
+// SMOOTH NAVIGATION & MODALS
 // =============================================
-function navigateTo(id) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  const top = el.getBoundingClientRect().top + window.scrollY - 80;
-  window.scrollTo({ top, behavior: 'smooth' });
+const modalOverlay = document.getElementById('main-modal');
+const modalBodyContent = document.getElementById('modal-body-content');
+
+function openModal(id) {
+  const contentEl = document.getElementById(id);
+  if (!contentEl) return;
+  
+  const container = contentEl.querySelector('.section-container') || contentEl;
+  modalBodyContent.innerHTML = container.innerHTML;
+  
+  // Trigger any reveal animations inside modal immediately
+  modalBodyContent.querySelectorAll('[class*="scroll-reveal"]').forEach(el => {
+    el.style.opacity = '1';
+    el.style.transform = 'none';
+  });
+
+  modalOverlay.classList.add('active');
+  document.body.style.overflow = 'hidden'; // Prevent background scrolling
+  
   cupimDropdown.classList.remove('open');
   hamburger.classList.remove('open');
   navLinksEl.classList.remove('open');
 }
+
+function closeModal() {
+  modalOverlay.classList.remove('active');
+  document.body.style.overflow = '';
+  setTimeout(() => { modalBodyContent.innerHTML = ''; }, 400);
+}
+
+modalOverlay.addEventListener('click', (e) => {
+  if (e.target === modalOverlay) closeModal();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && modalOverlay.classList.contains('active')) closeModal();
+});
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
@@ -77,6 +104,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     if (href && href.length > 1) {
       const target = document.querySelector(href);
       if (target) {
+        // Se for um link para uma seção de praga (que agora é modal), abre o modal
+        if (target.classList.contains('pest-section')) {
+          e.preventDefault();
+          openModal(target.id);
+          return;
+        }
+        // Senão faz scroll suave
         e.preventDefault();
         const top = target.getBoundingClientRect().top + window.scrollY - 80;
         window.scrollTo({ top, behavior: 'smooth' });
@@ -353,5 +387,20 @@ navSections.forEach(id => {
   }, { passive: true });
 })();
 
-console.log('%cPROTECT INSECT', 'color:#8dc641;font-size:1.4rem;font-weight:bold;font-family:Oswald');
-console.log('%cSite carregado com sucesso.', 'color:#6a9b3a;font-size:0.85rem');
+// =============================================
+// CARD CAROUSEL LOGIC
+// =============================================
+document.querySelectorAll('.card-carousel').forEach(carousel => {
+  const slides = carousel.querySelectorAll('.carousel-slide');
+  if (slides.length <= 1) return; // No need to slide if only 1 image
+  
+  let currentIdx = 0;
+  setInterval(() => {
+    slides[currentIdx].classList.remove('active');
+    currentIdx = (currentIdx + 1) % slides.length;
+    slides[currentIdx].classList.add('active');
+  }, 3000 + Math.random() * 1000); // randomize slightly so they don't all change at exact same ms
+});
+
+console.log('%cPROTECT INSECT', 'color:#FF7A00;font-size:1.4rem;font-weight:bold;font-family:Oswald');
+console.log('%cSite carregado com sucesso. (v3 - Modals)', 'color:#FF9933;font-size:0.85rem');
