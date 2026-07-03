@@ -404,3 +404,23 @@ document.querySelectorAll('.card-carousel').forEach(carousel => {
 
 console.log('%cPROTECT INSECT', 'color:#FF7A00;font-size:1.4rem;font-weight:bold;font-family:Oswald');
 console.log('%cSite carregado com sucesso. (v3 - Modals)', 'color:#FF9933;font-size:0.85rem');
+
+// SPLASH SCREEN LOGIC
+document.addEventListener('DOMContentLoaded', () => {
+  const splash = document.getElementById('splash-screen');
+  if (splash) {
+    // Travar scroll durante a animação
+    document.body.style.overflow = 'hidden';
+    
+    // Tempo total de visualização antes de sumir
+    setTimeout(() => {
+      splash.classList.add('fade-out');
+      document.body.style.overflow = 'auto'; // Destravar scroll
+      
+      // Remover do DOM após a transição (800ms)
+      setTimeout(() => {
+        splash.remove();
+      }, 800);
+    }, 2400); // 2.4s de animação
+  }
+});
