@@ -318,7 +318,7 @@ nav, section, footer { position: relative; z-index: 1; }
   min-height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 100px 10% 70px;
   gap: 60px;
   position: relative;
@@ -353,7 +353,7 @@ nav, section, footer { position: relative; z-index: 1; }
   50%       { opacity: 1; }
 }
 
-.hero-content { flex: 1; max-width: 640px; }
+.hero-content { flex: 1; max-width: 720px; }
 
 .hero-badge {
   display: inline-block;
@@ -423,65 +423,6 @@ nav, section, footer { position: relative; z-index: 1; }
 
 .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
 
-/* Hero shield */
-.hero-image { display: flex; justify-content: center; align-items: center; flex-shrink: 0; }
-.hero-shield {
-  position: relative;
-  width: 340px; height: 340px;
-  display: flex; align-items: center; justify-content: center;
-}
-.shield-outer {
-  width: 230px; height: 230px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, rgba(74,107,42,0.2), rgba(36,61,20,0.4));
-  border: 2px solid rgba(141,198,65,0.25);
-  display: flex; align-items: center; justify-content: center;
-  animation: shieldPulse 4.5s ease-in-out infinite;
-  position: relative; z-index: 2;
-}
-@keyframes shieldPulse {
-  0%, 100% { transform: scale(1); box-shadow: 0 0 40px rgba(74,107,42,0.25); }
-  50%       { transform: scale(1.03); box-shadow: 0 0 70px rgba(141,198,65,0.35); }
-}
-.shield-inner {
-  width: 170px; height: 170px;
-  border-radius: 50%;
-  background: rgba(10, 18, 5, 0.85);
-  border: 1px solid rgba(141,198,65,0.3);
-  display: flex; align-items: center; justify-content: center;
-  overflow: hidden;
-  padding: 16px;
-}
-/* Logo sem fundo branco */
-.shield-logo {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  filter: drop-shadow(0 0 12px rgba(141,198,65,0.4));
-}
-
-/* Orbit rings */
-.orbit {
-  position: absolute;
-  border-radius: 50%;
-  animation: orbitRotate linear infinite;
-  display: flex; align-items: flex-start; justify-content: center;
-}
-.orbit-dot {
-  width: 10px; height: 10px;
-  background: var(--accent);
-  border-radius: 50%;
-  box-shadow: 0 0 12px rgba(141,198,65,0.7);
-  display: block;
-  margin-top: 0;
-}
-.orbit-1 { width: 290px; height: 290px; top: 50%; left: 50%; margin: -145px 0 0 -145px; animation-duration: 8s; border: 1px dashed rgba(141,198,65,0.15); }
-.orbit-2 { width: 316px; height: 316px; top: 50%; left: 50%; margin: -158px 0 0 -158px; animation-duration: 14s; animation-direction: reverse; border: 1px dashed rgba(141,198,65,0.1); }
-.orbit-3 { width: 340px; height: 340px; top: 50%; left: 50%; margin: -170px 0 0 -170px; animation-duration: 20s; border: 1px dashed rgba(141,198,65,0.07); }
-@keyframes orbitRotate {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
 
 /* =============================================
    BUTTONS
@@ -603,7 +544,7 @@ nav, section, footer { position: relative; z-index: 1; }
 }
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 24px;
 }
 .service-card {
@@ -1424,6 +1365,15 @@ nav, section, footer { position: relative; z-index: 1; }
 }
 .footer-bottom p { font-size: 0.76rem; color: rgba(168,191,136,0.45); }
 
+/* Grid items default to min-width:auto, which lets long/nowrap content
+   force a track wider than its container. Guard every grid layout. */
+.pest-info-grid > *,
+.rat-control-layout > *,
+.contact-layout > *,
+.footer-container > * {
+  min-width: 0;
+}
+
 /* =============================================
    RESPONSIVE
    ============================================= */
@@ -1442,18 +1392,12 @@ nav, section, footer { position: relative; z-index: 1; }
   .hero-subtitle { max-width: 100%; margin: 0 auto 36px; }
   .hero-stats  { justify-content: center; }
   .hero-buttons { justify-content: center; }
-  .hero-image  { order: -1; }
-  .hero-shield { width: 260px; height: 260px; }
-  .shield-outer { width: 170px; height: 170px; }
-  .shield-inner { width: 120px; height: 120px; }
-  .orbit-1 { width: 210px; height: 210px; margin: -105px 0 0 -105px; }
-  .orbit-2 { width: 234px; height: 234px; margin: -117px 0 0 -117px; }
-  .orbit-3 { width: 260px; height: 260px; margin: -130px 0 0 -130px; }
 
   .pest-info-grid, .rat-control-layout { grid-template-columns: 1fr; }
   .pest-info-grid.reverse { direction: ltr; }
   .contact-layout { grid-template-columns: 1fr; }
   .cta-section { flex-direction: column; text-align: center; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
 
   .hamburger { display: flex; }
   .nav-links {
@@ -1485,7 +1429,11 @@ nav, section, footer { position: relative; z-index: 1; }
 @media (max-width: 640px) {
   .hero-title { font-size: 2rem; }
   .section-title { font-size: 1.7rem; }
-  .services-grid { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .service-card { padding: 20px 14px 18px; }
+  .card-carousel { margin: -20px -14px 16px -14px; width: calc(100% + 28px); height: 130px; }
+  .service-card h3 { font-size: 1rem; margin-bottom: 8px; }
+  .service-card-link { font-size: 0.74rem; }
   .pest-photo-grid { grid-template-columns: 1fr 1fr; }
   .pests-grid { grid-template-columns: 1fr; }
   .guarantee-banner { flex-direction: column; text-align: center; }
@@ -1547,34 +1495,93 @@ nav, section, footer { position: relative; z-index: 1; }
   animation: drawShield 1.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-/* GLOW FLASH */
-.splash-glow {
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  background: #8dc641;
-  border-radius: 50%;
-  filter: blur(40px);
-  opacity: 0;
-  z-index: 2;
-  animation: flashGlow 2s ease-in-out 0.2s forwards;
-}
-
-/* FINAL LOGO */
-.splash-logo {
+/* BRAND MARK: shield (cropped straight from the real logo) + typed name */
+.brand-mark {
   position: relative;
   z-index: 3;
-  width: 260px;
-  max-width: 75vw;
-  height: auto;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto;
-  filter: invert(1) grayscale(1) brightness(2) drop-shadow(0 0 10px rgba(255,255,255,0.2));
+  display: flex;
+  align-items: center;
+  gap: clamp(10px, 2.5vw, 18px);
+  padding: 0 20px;
+}
+
+/* Shield icon, cropped out of images/logo_oficial.png so it's pixel-identical to the real logo */
+.brand-shield {
+  flex-shrink: 0;
+  width: 93px;
+  height: 110px;
+  background-image: url('images/logo_oficial.png');
+  background-repeat: no-repeat;
+  background-size: 398px 280px;
+  background-position: -40px -143px;
+  filter: invert(1) grayscale(1) brightness(2);
   mix-blend-mode: screen;
   opacity: 0;
-  transform: scale(0.8) translateY(-18%);
-  animation: revealLogo 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) 0.4s forwards;
+  transform: scale(0.6);
+  animation: shieldIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0s forwards;
+}
+
+@media (max-width: 480px) {
+  .brand-shield {
+    width: 62px;
+    height: 73px;
+    background-size: 265px 187px;
+    background-position: -27px -95px;
+  }
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  gap: 2px;
+}
+
+.brand-text .line {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  vertical-align: bottom;
+  width: 0;
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(1.5rem, 6vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #ffffff;
+}
+
+.line-protect {
+  max-width: 7ch;
+  animation: typeProtect 0.55s steps(7, end) 0.15s forwards;
+}
+
+.line-insect {
+  max-width: 6ch;
+  border-right: 3px solid #ffffff;
+  animation:
+    typeInsect 0.45s steps(6, end) 0.7s forwards,
+    cursorBlink 0.5s step-end infinite 0.7s backwards;
+}
+
+@keyframes shieldIn {
+  from { opacity: 0; transform: scale(0.6); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes typeProtect {
+  from { width: 0; }
+  to { width: 7ch; }
+}
+
+@keyframes typeInsect {
+  from { width: 0; }
+  to { width: 6ch; }
+}
+
+@keyframes cursorBlink {
+  0%, 49% { border-color: transparent; }
+  50%, 99% { border-color: #ffffff; }
+  100% { border-color: transparent; }
 }
 
 @keyframes drawShield {
@@ -1584,18 +1591,4 @@ nav, section, footer { position: relative; z-index: 1; }
 
 @keyframes hideLaser {
   to { opacity: 0; }
-}
-
-@keyframes flashGlow {
-  0% { opacity: 0; transform: scale(0.5) translateY(0); }
-  30% { opacity: 0.8; transform: scale(2) translateY(0); filter: blur(60px); }
-  100% { opacity: 0; transform: scale(3) translateY(0); filter: blur(80px); }
-}
-
-@keyframes revealLogo {
-  0% { opacity: 0; transform: scale(0.8) translateY(-18%); filter: invert(1) grayscale(1) brightness(2) drop-shadow(0 0 0 rgba(255,255,255,0)); }
-  40% { opacity: 1; transform: scale(1.1) translateY(-18%); filter: invert(1) grayscale(1) brightness(2) drop-shadow(0 0 15px rgba(141,198,65,0.3)); }
-  80% { opacity: 1; transform: scale(1.1) translateY(-18%); filter: invert(1) grayscale(1) brightness(2) drop-shadow(0 0 15px rgba(141,198,65,0.3)); }
-  90% { opacity: 1; transform: scale(1.15) translateY(-18%); filter: invert(1) grayscale(1) brightness(2) drop-shadow(0 0 40px rgba(141,198,65,0.9)); }
-  100% { opacity: 1; transform: scale(1.1) translateY(-18%); filter: invert(1) grayscale(1) brightness(2) drop-shadow(0 0 15px rgba(141,198,65,0.3)); }
 }

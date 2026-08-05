@@ -412,15 +412,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Travar scroll durante a animação
     document.body.style.overflow = 'hidden';
     
-    // Tempo total de visualização antes de sumir
+    // Tempo total de visualização antes de sumir (escudo + digitação + pausa curta)
     setTimeout(() => {
       splash.classList.add('fade-out');
       document.body.style.overflow = 'auto'; // Destravar scroll
-      
+
       // Remover do DOM após a transição (800ms)
       setTimeout(() => {
         splash.remove();
       }, 800);
-    }, 2400); // 2.4s de animação
+    }, 1750); // ~1.15s de animação + 0.6s de pausa
   }
 });
