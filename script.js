@@ -9,6 +9,8 @@
 const navbar  = document.getElementById('navbar');
 const navLinksEl = document.getElementById('nav-links');
 const hamburger  = document.getElementById('hamburger');
+const heroBgLines = document.querySelector('.hero-bg-lines');
+const heroSectionEl = document.getElementById('inicio');
 let lastScroll = 0;
 
 window.addEventListener('scroll', () => {
@@ -24,21 +26,37 @@ window.addEventListener('scroll', () => {
     navbar.style.transform = 'translateY(0)';
   }
   lastScroll = currentScroll;
+
+  // Subtle parallax drift on the hero background lines
+  if (heroBgLines && heroSectionEl && currentScroll < heroSectionEl.offsetHeight) {
+    heroBgLines.style.transform = `translateY(${currentScroll * 0.15}px)`;
+  }
 }, { passive: true });
 
 // =============================================
-// HAMBURGER MENU
+// HAMBURGER MENU (off-canvas drawer)
 // =============================================
+const navOverlay = document.getElementById('nav-overlay');
+
+function closeMobileNav() {
+  hamburger.classList.remove('open');
+  navLinksEl.classList.remove('open');
+  navOverlay.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
 hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('open');
-  navLinksEl.classList.toggle('open');
+  const opening = !navLinksEl.classList.contains('open');
+  hamburger.classList.toggle('open', opening);
+  navLinksEl.classList.toggle('open', opening);
+  navOverlay.classList.toggle('active', opening);
+  document.body.style.overflow = opening ? 'hidden' : '';
 });
 
+navOverlay.addEventListener('click', closeMobileNav);
+
 document.querySelectorAll('.nav-link:not(.dropdown-btn), .nav-cta').forEach(link => {
-  link.addEventListener('click', () => {
-    hamburger.classList.remove('open');
-    navLinksEl.classList.remove('open');
-  });
+  link.addEventListener('click', closeMobileNav);
 });
 
 // =============================================
@@ -72,7 +90,7 @@ function openModal(id) {
   modalBodyContent.innerHTML = container.innerHTML;
   
   // Trigger any reveal animations inside modal immediately
-  modalBodyContent.querySelectorAll('[class*="scroll-reveal"]').forEach(el => {
+  modalBodyContent.querySelectorAll('[class*="scroll-reveal"], .reveal-title').forEach(el => {
     el.style.opacity = '1';
     el.style.transform = 'none';
   });
@@ -83,6 +101,7 @@ function openModal(id) {
   cupimDropdown.classList.remove('open');
   hamburger.classList.remove('open');
   navLinksEl.classList.remove('open');
+  navOverlay.classList.remove('active');
 }
 
 function closeModal() {
@@ -123,7 +142,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // SCROLL REVEAL ANIMATIONS (IntersectionObserver)
 // =============================================
 const revealEls = document.querySelectorAll(
-  '.scroll-reveal, .scroll-reveal-up, .scroll-reveal-left, .scroll-reveal-right'
+  '.scroll-reveal, .scroll-reveal-up, .scroll-reveal-left, .scroll-reveal-right, .reveal-title'
 );
 
 const revealObserver = new IntersectionObserver((entries) => {
@@ -165,22 +184,30 @@ function animateCounter(el, target, duration) {
   requestAnimationFrame(run);
 }
 
-let countersStarted = false;
 const counters = document.querySelectorAll('.stat-number');
 
-const counterObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting && !countersStarted) {
-      countersStarted = true;
-      counters.forEach(el => {
-        animateCounter(el, parseInt(el.getAttribute('data-count')), 2200);
-      });
-    }
+function startHeroCounters() {
+  counters.forEach(el => {
+    animateCounter(el, parseInt(el.getAttribute('data-count')), 2200);
   });
-}, { threshold: 0.5 });
+}
 
-const heroEl = document.getElementById('inicio');
-if (heroEl) counterObserver.observe(heroEl);
+// =============================================
+// HERO ENTRANCE — staggered slide-in, timed to start
+// the moment the splash screen clears (not behind it)
+// =============================================
+function revealHero() {
+  const heroEls = document.querySelectorAll('.hero-content .hero-reveal');
+  const STEP = 150; // ms between each element
+  heroEls.forEach((el, i) => {
+    setTimeout(() => el.classList.add('in-view'), i * STEP);
+  });
+
+  // Numbers start counting once the stats row has slid into place
+  const statsIndex = Array.from(heroEls).findIndex(el => el.classList.contains('hero-stats'));
+  const statsDelay = statsIndex >= 0 ? statsIndex * STEP : 0;
+  setTimeout(startHeroCounters, statsDelay + 850);
+}
 
 // =============================================
 // PARTICLES BACKGROUND
@@ -226,7 +253,7 @@ if (heroEl) counterObserver.observe(heroEl);
 // =============================================
 // MAGNETIC HOVER ON CARDS (subtle tilt)
 // =============================================
-document.querySelectorAll('.service-card, .pest-card').forEach(card => {
+document.querySelectorAll('.pest-card').forEach(card => {
   card.addEventListener('mousemove', (e) => {
     const rect = card.getBoundingClientRect();
     const x = ((e.clientX - rect.left) / rect.width  - 0.5) * 7;
@@ -241,13 +268,28 @@ document.querySelectorAll('.service-card, .pest-card').forEach(card => {
   });
 });
 
-// Glow follow on service cards
-document.querySelectorAll('.service-card').forEach(card => {
-  const glow = card.querySelector('.service-card-glow');
-  if (!glow) return;
-  card.addEventListener('mousemove', (e) => {
-    const rect = card.getBoundingClientRect();
-    glow.style.background = `radial-gradient(circle at ${e.clientX - rect.left}px ${e.clientY - rect.top}px, rgba(141,198,65,0.12) 0%, transparent 65%)`;
+// =============================================
+// SERVICE CARD FLIP – tap-to-flip on touch devices
+// (desktop/mouse relies on the CSS :hover flip)
+// =============================================
+if (!window.matchMedia('(hover: hover)').matches) {
+  document.querySelectorAll('.service-card').forEach(card => {
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('.service-card-btn')) return;
+      card.classList.toggle('flipped');
+    });
+  });
+}
+
+// =============================================
+// FAQ ACCORDION
+// =============================================
+document.querySelectorAll('.faq-item').forEach(item => {
+  const question = item.querySelector('.faq-question');
+  question.addEventListener('click', () => {
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(open => open.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
   });
 });
 
@@ -411,16 +453,19 @@ document.addEventListener('DOMContentLoaded', () => {
   if (splash) {
     // Travar scroll durante a animação
     document.body.style.overflow = 'hidden';
-    
+
     // Tempo total de visualização antes de sumir (escudo + digitação + pausa curta)
     setTimeout(() => {
       splash.classList.add('fade-out');
       document.body.style.overflow = 'auto'; // Destravar scroll
+      revealHero(); // Hero entra assim que a splash começa a sair, nunca escondido atrás dela
 
       // Remover do DOM após a transição (800ms)
       setTimeout(() => {
         splash.remove();
       }, 800);
     }, 1750); // ~1.15s de animação + 0.6s de pausa
+  } else {
+    revealHero();
   }
 });
