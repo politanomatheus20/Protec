@@ -18,24 +18,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body data-page="home">
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MDX2VTTK"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-
-  <!-- SPLASH SCREEN PRELOADER -->
-  <div id="splash-screen" class="splash-screen">
-    <div class="splash-content">
-      <div class="brand-mark">
-        <div class="brand-shield"></div>
-        <div class="brand-text">
-          <span class="line line-protect">PROTECT</span>
-          <span class="line line-insect">INSECT</span>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- PARTICLES BACKGROUND -->
   <div id="particles-bg"></div>
@@ -74,19 +61,13 @@
             Cupim <span class="arrow">&#9660;</span>
           </button>
           <div class="dropdown-menu" id="cupim-menu">
-            <a href="#madeira-seca" class="dropdown-item" onclick="openModal('madeira-seca'); return false;">
-              <div class="dropdown-icon-box">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              </div>
+            <a href="cupim-madeira-seca.html" class="dropdown-item">
               <div>
                 <strong>Cupim de Madeira Seca</strong>
                 <small>Tratamento específico para madeira</small>
               </div>
             </a>
-            <a href="#cupim-solo" class="dropdown-item" onclick="openModal('cupim-solo'); return false;">
-              <div class="dropdown-icon-box">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-              </div>
+            <a href="cupim-solo.html" class="dropdown-item">
               <div>
                 <strong>Cupim de Solo</strong>
                 <small>Eliminação de cupins subterrâneos</small>
@@ -95,8 +76,8 @@
           </div>
         </li>
 
-        <li><a href="#desratizacao" class="nav-link">Desratização</a></li>
-        <li><a href="#dedetizacao" class="nav-link">Dedetização</a></li>
+        <li><a href="desratizacao.html" class="nav-link">Desratização</a></li>
+        <li><a href="dedetizacao.html" class="nav-link">Dedetização</a></li>
         <li><a href="#contato" class="nav-link">Contato</a></li>
         <li>
           <a href="https://wa.me/5511972228090?text=Olá! Gostaria de fazer um orçamento." target="_blank" class="nav-cta">
@@ -110,6 +91,14 @@
 
   <!-- HERO SECTION -->
   <section class="hero" id="inicio">
+    <!-- Vídeo temporário (banco gratuito, licença livre, sem necessidade de atribuição) —
+         trocar videos/hero-cupim-bg.mp4 pela filmagem real da empresa assim que disponível -->
+    <div class="hero-video-bg">
+      <video autoplay muted loop playsinline poster="images/cupim_novo_1.jpg">
+        <source src="videos/hero-cupim-bg.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <div class="hero-video-overlay"></div>
     <div class="hero-bg-lines">
       <div class="bg-line"></div>
       <div class="bg-line"></div>
@@ -217,6 +206,111 @@
     </div>
   </div>
 
+  <!-- SINAIS DE INFESTAÇÃO - FAIXA DE FOTOS EM MOVIMENTO -->
+  <!-- O conjunto de 4 fotos é repetido várias vezes (e depois duplicado por inteiro)
+       para o loop nunca ficar sem conteúdo, mesmo em monitores bem largos. -->
+  <section class="photo-strip">
+    <div class="photo-strip-track">
+      <div class="photo-strip-item">
+        <img src="images/galeria_cupim_solo_trilha_parede.jpg" alt="Trilha de terra deixada pelo cupim de solo na parede" />
+      </div>
+      <div class="photo-strip-item">
+        <img src="images/galeria_cupim_solo_trilha_fundacao.jpg" alt="Trilha de cupim de solo na fundação do imóvel" />
+      </div>
+      <div class="photo-strip-item">
+        <img src="images/cupim_novo_2.jpg" alt="Danos de cupim de madeira seca" />
+      </div>
+      <div class="photo-strip-item">
+        <img src="images/cupim_solo_novo_2.jpg" alt="Rastro de cupim de solo na parede" />
+      </div>
+      <div class="photo-strip-item" aria-hidden="true">
+        <img src="images/galeria_cupim_solo_trilha_parede.jpg" alt="" />
+      </div>
+      <div class="photo-strip-item" aria-hidden="true">
+        <img src="images/galeria_cupim_solo_trilha_fundacao.jpg" alt="" />
+      </div>
+      <div class="photo-strip-item" aria-hidden="true">
+        <img src="images/cupim_novo_2.jpg" alt="" />
+      </div>
+      <div class="photo-strip-item" aria-hidden="true">
+        <img src="images/cupim_solo_novo_2.jpg" alt="" />
+      </div>
+      <div class="photo-strip-item" aria-hidden="true">
+        <img src="images/galeria_cupim_solo_trilha_parede.jpg" alt="" />
+      </div>
+      <div class="photo-strip-item" aria-hidden="true">
+        <img src="images/galeria_cupim_solo_trilha_fundacao.jpg" alt="" />
+      </div>
+      <div class="photo-strip-item" aria-hidden="true">
+        <img src="images/cupim_novo_2.jpg" alt="" />
+      </div>
+      <div class="photo-strip-item" aria-hidden="true">
+        <img src="images/cupim_solo_novo_2.jpg" alt="" />
+      </div>
+      <div class="photo-strip-item" aria-hidden="true">
+        <img src="images/galeria_cupim_solo_trilha_parede.jpg" alt="" />
+      </div>
+      <div class="photo-strip-item" aria-hidden="true">
+        <img src="images/galeria_cupim_solo_trilha_fundacao.jpg" alt="" />
+      </div>
+      <div class="photo-strip-item" aria-hidden="true">
+        <img src="images/cupim_novo_2.jpg" alt="" />
+      </div>
+      <div class="photo-strip-item" aria-hidden="true">
+        <img src="images/cupim_solo_novo_2.jpg" alt="" />
+      </div>
+      <!-- duplicado por inteiro para o loop infinito ficar contínuo -->
+      <div class="photo-strip-item" aria-hidden="true">
+        <img src="images/galeria_cupim_solo_trilha_parede.jpg" alt="" />
+      </div>
+      <div class="photo-strip-item" aria-hidden="true">
+        <img src="images/galeria_cupim_solo_trilha_fundacao.jpg" alt="" />
+      </div>
+      <div class="photo-strip-item" aria-hidden="true">
+        <img src="images/cupim_novo_2.jpg" alt="" />
+      </div>
+      <div class="photo-strip-item" aria-hidden="true">
+        <img src="images/cupim_solo_novo_2.jpg" alt="" />
+      </div>
+      <div class="photo-strip-item" aria-hidden="true">
+        <img src="images/galeria_cupim_solo_trilha_parede.jpg" alt="" />
+      </div>
+      <div class="photo-strip-item" aria-hidden="true">
+        <img src="images/galeria_cupim_solo_trilha_fundacao.jpg" alt="" />
+      </div>
+      <div class="photo-strip-item" aria-hidden="true">
+        <img src="images/cupim_novo_2.jpg" alt="" />
+      </div>
+      <div class="photo-strip-item" aria-hidden="true">
+        <img src="images/cupim_solo_novo_2.jpg" alt="" />
+      </div>
+      <div class="photo-strip-item" aria-hidden="true">
+        <img src="images/galeria_cupim_solo_trilha_parede.jpg" alt="" />
+      </div>
+      <div class="photo-strip-item" aria-hidden="true">
+        <img src="images/galeria_cupim_solo_trilha_fundacao.jpg" alt="" />
+      </div>
+      <div class="photo-strip-item" aria-hidden="true">
+        <img src="images/cupim_novo_2.jpg" alt="" />
+      </div>
+      <div class="photo-strip-item" aria-hidden="true">
+        <img src="images/cupim_solo_novo_2.jpg" alt="" />
+      </div>
+      <div class="photo-strip-item" aria-hidden="true">
+        <img src="images/galeria_cupim_solo_trilha_parede.jpg" alt="" />
+      </div>
+      <div class="photo-strip-item" aria-hidden="true">
+        <img src="images/galeria_cupim_solo_trilha_fundacao.jpg" alt="" />
+      </div>
+      <div class="photo-strip-item" aria-hidden="true">
+        <img src="images/cupim_novo_2.jpg" alt="" />
+      </div>
+      <div class="photo-strip-item" aria-hidden="true">
+        <img src="images/cupim_solo_novo_2.jpg" alt="" />
+      </div>
+    </div>
+  </section>
+
   <!-- SERVICES OVERVIEW -->
   <section class="services-overview" id="servicos">
     <div class="section-container">
@@ -225,455 +319,49 @@
         <h2 class="section-title reveal-title" data-delay="100">Soluções Completas Para<br /><span>Proteção do Seu Imóvel</span></h2>
         <p class="section-subtitle reveal-title" data-delay="200">Tecnologia, eficiência e segurança em cada serviço</p>
       </div>
-      <div class="services-grid">
-        <div class="service-card scroll-reveal-up" data-delay="300">
-          <div class="service-card-inner">
-            <div class="service-card-front">
-              <div class="card-carousel" id="carousel-1">
-                <img src="images/cupim_novo_1.jpg" class="carousel-slide active" alt="Danos cupim madeira seca">
-                <img src="images/cupim_novo_2.jpg" class="carousel-slide" alt="Danos cupim madeira seca">
-                <img src="images/cupim_novo_3.jpg" class="carousel-slide" alt="Cupins na madeira">
-                <img src="images/cupim_novo_4.jpg" class="carousel-slide" alt="Cupins de madeira seca">
-              </div>
-              <div class="service-card-text">
-                <h3>Cupim de Madeira Seca</h3>
-                <span class="service-card-link">Mais Informações</span>
-              </div>
-            </div>
-            <div class="service-card-back">
-              <h3>Cupim de Madeira Seca</h3>
-              <p>Ataca portas, móveis e estruturas de madeira seca por dentro, com danos quase invisíveis até ser tarde demais.</p>
-              <button type="button" class="service-card-btn" onclick="openModal('madeira-seca')">Saber Mais</button>
-            </div>
+      <div class="services-grid-v2">
+        <a href="https://wa.me/5511972228090?text=Olá! Preciso de um orçamento para cupim de madeira seca." target="_blank" class="service-card-v2 scroll-reveal-up" data-delay="300" style="background-image: url('images/cupim_novo_3.jpg');">
+          <div class="service-card-v2-content">
+            <h3>Cupim de Madeira Seca</h3>
+            <p>Ataca portas, móveis e estruturas de madeira seca por dentro, com danos quase invisíveis até ser tarde demais.</p>
+            <span class="service-card-v2-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.5 10.5a19.79 19.79 0 01-3.07-8.67A2 2 0 013.44 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              Fale Conosco
+            </span>
           </div>
-        </div>
-
-        <div class="service-card scroll-reveal-up" data-delay="400">
-          <div class="service-card-inner">
-            <div class="service-card-front">
-              <div class="card-carousel" id="carousel-2">
-                <img src="images/cupim_solo.jpg" class="carousel-slide active" alt="Cupim de solo">
-                <img src="images/cupim_solo_novo_1.jpg" class="carousel-slide" alt="Cupins em madeira">
-                <img src="images/cupim_solo_novo_2.jpg" class="carousel-slide" alt="Rastro de cupim de solo">
-                <img src="images/cupim_solo_novo_3.jpg" class="carousel-slide" alt="Danos de cupim de solo">
-              </div>
-              <div class="service-card-text">
-                <h3>Cupim de Solo</h3>
-                <span class="service-card-link">Mais Informações</span>
-              </div>
-            </div>
-            <div class="service-card-back">
-              <h3>Cupim de Solo</h3>
-              <p>Colônias subterrâneas de milhões de indivíduos que avançam por túneis de terra até as fundações do imóvel.</p>
-              <button type="button" class="service-card-btn" onclick="openModal('cupim-solo')">Saber Mais</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="service-card scroll-reveal-up" data-delay="500">
-          <div class="service-card-inner">
-            <div class="service-card-front">
-              <div class="card-carousel" id="carousel-3">
-                <img src="images/estacao_isca.jpg" class="carousel-slide active" alt="Desratização">
-                <img src="images/rato_novo_1.jpg" class="carousel-slide" alt="Ratos">
-                <img src="images/rato_novo_2.jpg" class="carousel-slide" alt="Camundongo">
-                <img src="images/rato_novo_3.jpg" class="carousel-slide" alt="Rato">
-              </div>
-              <div class="service-card-text">
-                <h3>Desratização</h3>
-                <span class="service-card-link">Mais Informações</span>
-              </div>
-            </div>
-            <div class="service-card-back">
-              <h3>Desratização</h3>
-              <p>Estações de iscas estratégicas e rodenticidas seguros para eliminar ratos e camundongos com eficiência.</p>
-              <button type="button" class="service-card-btn" onclick="openModal('desratizacao')">Saber Mais</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="service-card scroll-reveal-up" data-delay="600">
-          <div class="service-card-inner">
-            <div class="service-card-front">
-              <div class="card-carousel" id="carousel-4">
-                <img src="images/praga_barata.jpg" class="carousel-slide active" alt="Barata">
-                <img src="images/praga_formiga.jpg" class="carousel-slide" alt="Formiga">
-                <img src="images/praga_aranha.jpg" class="carousel-slide" alt="Aranha">
-                <img src="images/praga_morcego.jpg" class="carousel-slide" alt="Morcego">
-                <img src="images/praga_mosca.jpg" class="carousel-slide" alt="Mosca">
-                <img src="images/praga_pernilongo.jpg" class="carousel-slide" alt="Pernilongo">
-              </div>
-              <div class="service-card-text">
-                <h3>Dedetização</h3>
-                <span class="service-card-link">Mais Informações</span>
-              </div>
-            </div>
-            <div class="service-card-back">
-              <h3>Dedetização</h3>
-              <p>Eliminação de baratas, formigas, aranhas, morcegos, moscas e pernilongos com tratamento específico para cada praga.</p>
-              <button type="button" class="service-card-btn" onclick="openModal('dedetizacao')">Saber Mais</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CUPIM DE MADEIRA SECA -->
-  <section class="pest-section" id="madeira-seca">
-    <div class="section-container">
-      <div class="section-header">
-        <span class="section-tag reveal-title" data-delay="0">DESCUPINIZAÇÃO</span>
-        <h2 class="section-title reveal-title" data-delay="100">Cupim de Madeira Seca</h2>
-        <p class="section-subtitle reveal-title" data-delay="200">Conheça o inimigo invisível que pode estar destruindo seu imóvel</p>
-      </div>
-
-      <div class="pest-info-grid">
-        <div class="pest-info-text scroll-reveal-left" data-delay="300">
-          <a href="https://wa.me/5511972228090?text=Olá! Preciso de um orçamento." target="_blank" class="btn btn-primary btn-large btn-glow btn-pulse" style="margin-bottom: 24px; display: inline-block; font-size: 1.1rem; padding: 16px 32px; width: 100%; text-align: center;">
-            Solicitar Orçamento Grátis
-          </a>
-          <h3>O Que é o Cupim de Madeira Seca?</h3>
-          <p>O <strong>cupim de madeira seca</strong> (<em>Cryptotermes brevis</em>) é uma das pragas mais devastadoras para imóveis residenciais e comerciais. Diferente de outros cupins, ele não depende do solo — pode se instalar em qualquer madeira seca, como móveis, portas, janelas, telhados e estruturas internas.</p>
-          <p>Sua colônia se desenvolve dentro da própria madeira, tornando a infestação quase invisível até que os danos sejam irreversíveis. O sinal mais comum é a presença de <strong>pó de madeira fino</strong> (fezes) ao redor de pequenos buracos circulares.</p>
-
-          <div class="damage-list">
-            <h4>Danos que ele causa:</h4>
-            <ul>
-              <li>Destruição de estruturas de madeira</li>
-              <li>Comprometimento de móveis e portas</li>
-              <li>Danos em telhados e forros</li>
-              <li>Prejuízos financeiros elevados</li>
-              <li>Risco estrutural ao imóvel</li>
-              <li>Desvalorização do patrimônio</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="pest-images scroll-reveal-right" data-delay="400">
-          <div class="pest-photo-grid">
-            <div class="pest-photo">
-              <img src="images/cupim_novo_1.jpg" alt="Danos em madeira" />
-            </div>
-            <div class="pest-photo">
-              <img src="images/cupim_novo_2.jpg" alt="Danos em estruturas" />
-            </div>
-            <div class="pest-photo">
-              <img src="images/cupim_novo_3.jpg" alt="Cupins na madeira" />
-            </div>
-            <div class="pest-photo">
-              <img src="images/cupim_novo_4.jpg" alt="Danos em porta" />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="treatment-card scroll-reveal-up">
-        <div class="treatment-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
-        </div>
-        <div class="treatment-content">
-          <h4>Nosso Tratamento Exclusivo</h4>
-          <p>Utilizamos <strong>inseticidas de última geração</strong> aplicados diretamente nas madeiras infectadas, com injeção em galerias e tratamento superficial. O processo elimina 100% da colônia e cria uma barreira protetora duradoura.</p>
-        </div>
-      </div>
-
-      <div class="cta-section scroll-reveal-up">
-        <div class="cta-content">
-          <h3>Identificou Cupim de Madeira Seca?</h3>
-          <p>Não perca tempo! Cada dia sem tratamento aumenta os danos. Entre em contato agora e receba um orçamento gratuito.</p>
-        </div>
-        <a href="https://wa.me/5511972228090?text=Olá! Preciso de um orçamento." target="_blank" class="btn btn-primary btn-large btn-glow btn-pulse" style="margin-top: 20px; font-size: 1.1rem; padding: 16px 32px;">
-          Solicitar Orçamento Grátis
         </a>
-      </div>
-    </div>
-  </section>
 
-  <!-- CUPIM DE SOLO -->
-  <section class="pest-section alt-bg" id="cupim-solo">
-    <div class="section-container">
-      <div class="section-header">
-        <span class="section-tag reveal-title" data-delay="0">DESCUPINIZAÇÃO</span>
-        <h2 class="section-title reveal-title" data-delay="100">Cupim de Solo</h2>
-        <p class="section-subtitle reveal-title" data-delay="200">O cupim subterrâneo que ataca silenciosamente pelas fundações</p>
-      </div>
-
-      <div class="pest-info-grid reverse">
-        <div class="pest-images scroll-reveal-left" data-delay="300">
-          <div class="pest-photo-grid">
-            <div class="pest-photo">
-              <img src="images/cupim_solo.jpg" alt="Colônia subterrânea de cupim" />
-            </div>
-            <div class="pest-photo">
-              <img src="images/cupim_solo_novo_1.jpg" alt="Madeira destruída por cupim de solo" />
-            </div>
-            <div class="pest-photo">
-              <img src="images/cupim_solo_novo_2.jpg" alt="Rastro na parede de cupim de solo" />
-            </div>
-            <div class="pest-photo">
-              <img src="images/cupim_solo_novo_3.jpg" alt="Destruição interna por cupim de solo" />
-            </div>
+        <a href="https://wa.me/5511972228090?text=Olá! Preciso de um orçamento para cupim de solo." target="_blank" class="service-card-v2 scroll-reveal-up" data-delay="400" style="background-image: url('images/cupim_solo_novo_1.jpg');">
+          <div class="service-card-v2-content">
+            <h3>Cupim de Solo</h3>
+            <p>Colônias subterrâneas de milhões de indivíduos que avançam por túneis de terra até as fundações do imóvel.</p>
+            <span class="service-card-v2-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.5 10.5a19.79 19.79 0 01-3.07-8.67A2 2 0 013.44 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              Fale Conosco
+            </span>
           </div>
-        </div>
-        <div class="pest-info-text scroll-reveal-right" data-delay="400">
-          <a href="https://wa.me/5511972228090?text=Olá! Preciso de um orçamento." target="_blank" class="btn btn-primary btn-large btn-glow btn-pulse" style="margin-bottom: 24px; display: inline-block; font-size: 1.1rem; padding: 16px 32px; width: 100%; text-align: center;">
-            Solicitar Orçamento Grátis
-          </a>
-          <h3>O Que é o Cupim de Solo?</h3>
-          <p>O <strong>cupim de solo</strong> (ou cupim subterrâneo) constrói enormes colônias no solo e cria túneis de terra para chegar até a madeira. São os mais destrutivos de todos, podendo comprometer fundações inteiras.</p>
-          <p>Sua colônia pode conter <strong>milhões de indivíduos</strong> e os danos geralmente só são descobertos quando já estão avançados. A rainha pode viver por décadas, produzindo continuamente novos cupins.</p>
-
-          <div class="damage-list">
-            <h4>Características e Danos:</h4>
-            <ul>
-              <li>Constroem túneis de terra visíveis</li>
-              <li>Atacam fundações e alicerces</li>
-              <li>Colônias de milhões de indivíduos</li>
-              <li>Destroem toda estrutura de madeira</li>
-              <li>Danos podem levar ao colapso estrutural</li>
-              <li>Necessitam de tratamento especializado no solo</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="treatment-card green scroll-reveal-up">
-        <div class="treatment-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-        </div>
-        <div class="treatment-content">
-          <h4>Tratamento Especializado de Solo</h4>
-          <p>Realizamos a <strong>aplicação de termicidas diretamente no solo</strong> ao redor e sob a edificação, criando uma barreira química que elimina as colônias e impede novas infestações. Técnica aprovada e altamente eficaz.</p>
-        </div>
-      </div>
-
-
-      <div class="cta-section scroll-reveal-up">
-        <div class="cta-content">
-          <h3>Suspeita de Cupim de Solo?</h3>
-          <p>O tratamento rápido pode salvar sua estrutura! Entre em contato agora mesmo.</p>
-        </div>
-        <a href="https://wa.me/5511972228090?text=Olá! Preciso de um orçamento." target="_blank" class="btn btn-primary btn-large btn-glow btn-pulse" style="margin-top: 20px; font-size: 1.1rem; padding: 16px 32px;">
-          Solicitar Orçamento Grátis
         </a>
-      </div>
-    </div>
-  </section>
 
-  <!-- DESRATIZAÇÃO -->
-  <section class="pest-section" id="desratizacao">
-    <div class="section-container">
-      <div class="section-header">
-        <span class="section-tag reveal-title" data-delay="0">DESRATIZAÇÃO</span>
-        <h2 class="section-title reveal-title" data-delay="100">Controle de Roedores</h2>
-        <p class="section-subtitle reveal-title" data-delay="200">Tecnologia e segurança no controle de ratos e camundongos</p>
-      </div>
-
-      <div class="rat-control-layout">
-        <div class="rat-info scroll-reveal-left" data-delay="300">
-          <a href="https://wa.me/5511972228090?text=Olá! Preciso de um orçamento." target="_blank" class="btn btn-primary btn-large btn-glow btn-pulse" style="margin-bottom: 24px; display: inline-block; font-size: 1.1rem; padding: 16px 32px; width: 100%; text-align: center;">
-            Solicitar Orçamento Grátis
-          </a>
-          <h3>Como Funciona Nossa Desratização?</h3>
-          <p>Utilizamos um sistema de <strong>controle integrado de pragas</strong> com estações de iscas (bait stations) instaladas estrategicamente em pontos de passagem dos roedores. As iscas contêm <strong>rodenticidas de última geração</strong>, seguros quando corretamente instalados.</p>
-
-          <div class="process-steps">
-            <div class="step scroll-reveal-up" data-delay="400">
-              <div class="step-number">01</div>
-              <div class="step-info">
-                <h4>Instalação das Estações</h4>
-                <p>Posicionamos as estações de iscas em locais estratégicos, seguros e discretos.</p>
-              </div>
-            </div>
-            <div class="step scroll-reveal-up" data-delay="500">
-              <div class="step-number">02</div>
-              <div class="step-info">
-                <h4>Iscas Especializadas</h4>
-                <p>Utilizamos produtos específicos de alta eficácia, com formulações atrativas para os roedores.</p>
-              </div>
-            </div>
-            <div class="step scroll-reveal-up" data-delay="600">
-              <div class="step-number">03</div>
-              <div class="step-info">
-                <h4>Monitoramento Contínuo</h4>
-                <p>Realizamos visitas de acompanhamento para reposição de iscas e verificação do controle.</p>
-              </div>
-            </div>
+        <a href="https://wa.me/5511972228090?text=Olá! Preciso de um orçamento para desratização." target="_blank" class="service-card-v2 scroll-reveal-up" data-delay="500" style="background-image: url('images/rato_novo_1.jpg');">
+          <div class="service-card-v2-content">
+            <h3>Desratização</h3>
+            <p>Estações de iscas estratégicas e rodenticidas seguros para eliminar ratos e camundongos com eficiência.</p>
+            <span class="service-card-v2-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.5 10.5a19.79 19.79 0 01-3.07-8.67A2 2 0 013.44 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              Fale Conosco
+            </span>
           </div>
-        </div>
-
-        <div class="pest-images scroll-reveal-right" data-delay="700">
-          <div class="pest-photo-grid">
-            <div class="pest-photo">
-              <img src="images/estacao_isca.jpg" alt="Estação de isca" />
-            </div>
-            <div class="pest-photo">
-              <img src="images/rato_novo_1.jpg" alt="Ratos em grupo" />
-            </div>
-            <div class="pest-photo">
-              <img src="images/rato_novo_2.jpg" alt="Camundongo" />
-            </div>
-            <div class="pest-photo">
-              <img src="images/rato_novo_3.jpg" alt="Rato" />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="warning-banner scroll-reveal-up">
-        <div class="warning-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-        </div>
-        <p><strong>Ratos transmitem mais de 35 doenças!</strong> Entre elas: Leptospirose, Hantavirose, Salmonelose e muito mais. Não deixe sua família em risco!</p>
-      </div>
-
-      <div class="cta-section scroll-reveal-up">
-        <div class="cta-content">
-          <h3>Encontrou Sinais de Roedores?</h3>
-          <p>Fique tranquilo! Nossa equipe resolve rapidamente e com segurança.</p>
-        </div>
-        <a href="https://wa.me/5511972228090?text=Olá! Preciso de um orçamento." target="_blank" class="btn btn-primary btn-large btn-glow btn-pulse" style="margin-top: 20px; font-size: 1.1rem; padding: 16px 32px;">
-          Solicitar Orçamento Grátis
         </a>
-      </div>
-    </div>
-  </section>
 
-  <!-- DEDETIZAÇÃO -->
-  <section class="pest-section alt-bg" id="dedetizacao">
-    <div class="section-container">
-      <div class="section-header">
-        <span class="section-tag reveal-title" data-delay="0">DEDETIZAÇÃO</span>
-        <h2 class="section-title reveal-title" data-delay="100">Controle de Pragas Urbanas</h2>
-        <p class="section-subtitle reveal-title" data-delay="200">Eliminação eficiente de pragas que ameaçam a saúde e o conforto do seu lar</p>
-      </div>
-
-      <div class="pests-grid">
-        <div style="grid-column: 1 / -1; margin-bottom: 20px;">
-          <a href="https://wa.me/5511972228090?text=Olá! Preciso de um orçamento." target="_blank" class="btn btn-primary btn-large btn-glow btn-pulse" style="display: block; font-size: 1.1rem; padding: 16px 32px; text-align: center;">
-            Solicitar Orçamento Grátis
-          </a>
-        </div>
-
-        <div class="pest-card scroll-reveal-up" data-delay="300" id="pest-barata">
-          <div class="pest-card-header">
-            <div class="pest-icon">
-              <img src="images/praga_barata.jpg" alt="Barata" class="real-icon-img" />
-            </div>
-            <h3>Baratas</h3>
+        <a href="https://wa.me/5511972228090?text=Olá! Preciso de um orçamento para dedetização." target="_blank" class="service-card-v2 scroll-reveal-up" data-delay="600" style="background-image: url('images/praga_barata.jpg');">
+          <div class="service-card-v2-content">
+            <h3>Dedetização</h3>
+            <p>Eliminação de baratas, formigas, aranhas, morcegos, moscas e pernilongos com tratamento específico para cada praga.</p>
+            <span class="service-card-v2-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.5 10.5a19.79 19.79 0 01-3.07-8.67A2 2 0 013.44 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              Fale Conosco
+            </span>
           </div>
-          <div class="pest-card-body">
-            <p>As baratas são vetores de mais de 40 tipos de bactérias, contaminando alimentos e superfícies. Nosso tratamento elimina adultos e ovos, garantindo controle total.</p>
-            <div class="pest-tags">
-              <span>Gel Inseticida</span>
-              <span>Spray</span>
-              <span>Fumigação</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="pest-card scroll-reveal-up" data-delay="400" id="pest-formiga">
-          <div class="pest-card-header">
-            <div class="pest-icon">
-              <img src="images/praga_formiga.jpg" alt="Formiga" class="real-icon-img" />
-            </div>
-            <h3>Formigas</h3>
-          </div>
-          <div class="pest-card-body">
-            <p>As formigas invadem cozinhas, banheiros e qualquer ambiente com umidade ou alimento. Utilizamos iscas que eliminam a rainha e toda a colônia.</p>
-            <div class="pest-tags">
-              <span>Iscas Biológicas</span>
-              <span>Barreira Química</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="pest-card scroll-reveal-up" data-delay="500" id="pest-aranha">
-          <div class="pest-card-header">
-            <div class="pest-icon">
-              <img src="images/praga_aranha.jpg" alt="Aranha" class="real-icon-img" />
-            </div>
-            <h3>Aranhas</h3>
-          </div>
-          <div class="pest-card-body">
-            <p>Espécies como a aranha-marrom e a viúva-negra representam risco de vida. Nosso tratamento elimina aranhas peçonhentas e não peçonhentas com segurança total.</p>
-            <div class="pest-tags">
-              <span>Tratamento Perimetral</span>
-              <span>Inseticida Residual</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="pest-card scroll-reveal-up" data-delay="600" id="pest-morcego">
-          <div class="pest-card-header">
-            <div class="pest-icon">
-              <img src="images/praga_morcego.jpg" alt="Morcego" class="real-icon-img" />
-            </div>
-            <h3>Morcegos</h3>
-          </div>
-          <div class="pest-card-body">
-            <p>Morcegos em forros e telhados causam odores intensos e podem transmitir raiva. Realizamos a espantação humanizada e o vedamento dos acessos.</p>
-            <div class="pest-tags">
-              <span>Espantação</span>
-              <span>Exclusão</span>
-              <span>Vedação</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="pest-card scroll-reveal-up" data-delay="700" id="pest-mosca">
-          <div class="pest-card-header">
-            <div class="pest-icon">
-              <img src="images/praga_mosca.jpg" alt="Mosca" class="real-icon-img" />
-            </div>
-            <h3>Moscas</h3>
-          </div>
-          <div class="pest-card-body">
-            <p>Moscas contaminam alimentos e transmitem doenças graves. Atuamos no controle das moscas adultas e no tratamento dos focos de larvas para eliminação definitiva.</p>
-            <div class="pest-tags">
-              <span>Armadilhas UV</span>
-              <span>Inseticida</span>
-              <span>Controle de Focos</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="pest-card scroll-reveal-up" data-delay="800" id="pest-pernilongo">
-          <div class="pest-card-header">
-            <div class="pest-icon">
-              <img src="images/praga_pernilongo.jpg" alt="Pernilongo" class="real-icon-img" />
-            </div>
-            <h3>Pernilongos</h3>
-          </div>
-          <div class="pest-card-body">
-            <p>Além do incômodo, os pernilongos transmitem dengue, zika e chikungunya. Realizamos nebulização e controle de criadouros para eliminação imediata e duradoura.</p>
-            <div class="pest-tags">
-              <span>Nebulização</span>
-              <span>Controle de Criadouros</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="guarantee-banner scroll-reveal-up">
-        <div class="guarantee-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
-        </div>
-        <div class="guarantee-content">
-          <h3>Garantia de Satisfação</h3>
-          <p>Todos os nossos serviços vêm acompanhados de <strong>laudo técnico</strong> e <strong>garantia de retorno</strong>. Se o problema persistir, voltamos sem custo adicional!</p>
-        </div>
-      </div>
-
-      <div class="cta-section scroll-reveal-up">
-        <div class="cta-content">
-          <h3>Pronto para um Ambiente Saudável?</h3>
-          <p>Entre em contato e solicite seu orçamento gratuito de dedetização.</p>
-        </div>
-        <a href="https://wa.me/5511972228090?text=Olá! Preciso de um orçamento." target="_blank" class="btn btn-primary btn-large btn-glow btn-pulse" style="margin-top: 20px; font-size: 1.1rem; padding: 16px 32px;">
-          Solicitar Orçamento Grátis
         </a>
       </div>
     </div>
@@ -693,6 +381,115 @@
         <a href="https://wa.me/5511972228090?text=Olá! Gostaria de saber se vocês atendem meu bairro." target="_blank" class="btn btn-primary btn-glow">
           Consultar Meu Bairro
         </a>
+      </div>
+
+      <div class="segments-block scroll-reveal-up" data-delay="400">
+        <span class="segments-tag">SEGMENTOS</span>
+        <h3>Quem Atendemos</h3>
+        <div class="segments-grid">
+          <div class="segment-card">
+            <div class="segment-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 10.5L12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></svg></div>
+            <span>Residências</span>
+          </div>
+          <div class="segment-card">
+            <div class="segment-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 21V5a1 1 0 011-1h6a1 1 0 011 1v16"/><path d="M14 21V9a1 1 0 011-1h4a1 1 0 011 1v12"/><path d="M8 8h0M8 12h0M8 16h0"/></svg></div>
+            <span>Apartamentos</span>
+          </div>
+          <div class="segment-card">
+            <div class="segment-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18"/><path d="M6 21V7l6-4 6 4v14"/><path d="M10 21v-5h4v5"/><path d="M9 10h0M15 10h0M9 14h0M15 14h0"/></svg></div>
+            <span>Condomínios</span>
+          </div>
+          <div class="segment-card">
+            <div class="segment-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M9 8h1M14 8h1M9 12h1M14 12h1M9 16h1M14 16h1"/></svg></div>
+            <span>Empresas</span>
+          </div>
+          <div class="segment-card">
+            <div class="segment-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l1-5h16l1 5"/><path d="M4 9v11h16V9"/><path d="M9 20v-6h6v6"/></svg></div>
+            <span>Comércios</span>
+          </div>
+          <div class="segment-card">
+            <div class="segment-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21V11l5 3V8l5 3V5l5 3v13H3z"/></svg></div>
+            <span>Indústrias</span>
+          </div>
+          <div class="segment-card">
+            <div class="segment-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M12 7v6M9 10h6"/><path d="M9 21v-4h6v4"/></svg></div>
+            <span>Hospitais</span>
+          </div>
+          <div class="segment-card">
+            <div class="segment-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18"/><path d="M5 21V10l7-5 7 5v11"/><path d="M9 21v-5h6v5"/><path d="M9 9h6"/></svg></div>
+            <span>Escolas</span>
+          </div>
+        </div>
+        <a href="https://wa.me/5511972228090?text=Olá! Gostaria de saber mais sobre o atendimento para o meu segmento." target="_blank" class="btn btn-whatsapp">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" style="width:18px;height:18px;"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+          Fale Conosco
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFERENCIAIS -->
+  <section class="diferenciais-section">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-tag reveal-title" data-delay="0">DIFERENCIAIS</span>
+        <h2 class="section-title reveal-title" data-delay="100">Por que escolher a<br /><span>Protect Insect?</span></h2>
+      </div>
+      <div class="diferenciais-grid">
+        <div class="diferencial-card scroll-reveal-up" data-delay="200">
+          <div class="diferencial-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <div>
+            <h4>Atendimento rápido</h4>
+            <p>Chegamos em até 2 horas após o contato</p>
+          </div>
+        </div>
+        <div class="diferencial-card scroll-reveal-up" data-delay="300">
+          <div class="diferencial-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <div>
+            <h4>Produtos certificados</h4>
+            <p>Todos os produtos aprovados pela ANVISA</p>
+          </div>
+        </div>
+        <div class="diferencial-card scroll-reveal-up" data-delay="400">
+          <div class="diferencial-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          </div>
+          <div>
+            <h4>Garantia no serviço</h4>
+            <p>Se a praga voltar, a gente volta também</p>
+          </div>
+        </div>
+        <div class="diferencial-card scroll-reveal-up" data-delay="500">
+          <div class="diferencial-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <h4>Disponível 24h</h4>
+            <p>Emergências não têm hora marcada</p>
+          </div>
+        </div>
+        <div class="diferencial-card scroll-reveal-up" data-delay="600">
+          <div class="diferencial-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <h4>Cobertura total</h4>
+            <p>Todos os bairros de São Paulo</p>
+          </div>
+        </div>
+        <div class="diferencial-card scroll-reveal-up" data-delay="700">
+          <div class="diferencial-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <div>
+            <h4>Técnicos especializados</h4>
+            <p>Equipe treinada e uniformizada</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -860,21 +657,11 @@
     </div>
   </section>
 
-  <!-- MODAL CONTAINER -->
-  <div class="modal-overlay" id="main-modal">
-    <div class="modal-content-wrapper">
-      <button class="modal-close-btn" onclick="closeModal()">×</button>
-      <div class="modal-body" id="modal-body-content">
-        <!-- Conteúdo do modal será injetado aqui -->
-      </div>
-    </div>
-  </div>
-
   <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-container">
       <div class="footer-brand">
-        <img src="logo.png" alt="Protect Insect" class="footer-logo" />
+        <img src="images/logo_oficial.png" alt="Protect Insect" class="footer-logo" />
         <p>Proteção total contra pragas urbanas. Qualidade, eficiência e segurança para sua família e seu patrimônio.</p>
         <div class="footer-social">
           <a href="https://wa.me/5511972228090" target="_blank" class="social-link whatsapp">WhatsApp</a>
@@ -885,21 +672,21 @@
       <div class="footer-links">
         <h4>Serviços</h4>
         <ul>
-          <li><a href="#madeira-seca" onclick="openModal('madeira-seca'); return false;">Cupim de Madeira Seca</a></li>
-          <li><a href="#cupim-solo" onclick="openModal('cupim-solo'); return false;">Cupim de Solo</a></li>
-          <li><a href="#desratizacao">Desratização</a></li>
-          <li><a href="#dedetizacao">Dedetização</a></li>
+          <li><a href="cupim-madeira-seca.html">Cupim de Madeira Seca</a></li>
+          <li><a href="cupim-solo.html">Cupim de Solo</a></li>
+          <li><a href="desratizacao.html">Desratização</a></li>
+          <li><a href="dedetizacao.html">Dedetização</a></li>
         </ul>
       </div>
       <div class="footer-links">
         <h4>Dedetização</h4>
         <ul>
-          <li><a href="#pest-barata">Baratas</a></li>
-          <li><a href="#pest-formiga">Formigas</a></li>
-          <li><a href="#pest-aranha">Aranhas</a></li>
-          <li><a href="#pest-morcego">Morcegos</a></li>
-          <li><a href="#pest-mosca">Moscas</a></li>
-          <li><a href="#pest-pernilongo">Pernilongos</a></li>
+          <li><a href="dedetizacao.html#barata">Baratas</a></li>
+          <li><a href="dedetizacao.html#formiga">Formigas</a></li>
+          <li><a href="dedetizacao.html#aranha">Aranhas</a></li>
+          <li><a href="dedetizacao.html#morcego">Morcegos</a></li>
+          <li><a href="dedetizacao.html#mosca">Moscas</a></li>
+          <li><a href="dedetizacao.html#pernilongo">Pernilongos</a></li>
         </ul>
       </div>
       <div class="footer-cta">
@@ -910,6 +697,87 @@
         </a>
       </div>
     </div>
+
+    <div class="footer-seo-links">
+      <h4>Atendemos Toda a Região de São Paulo</h4>
+      <div class="footer-seo-list">
+            <a href="dedetizacao.html">Dedetização na Sé</a>
+            <a href="dedetizacao.html">Dedetização na República</a>
+            <a href="dedetizacao.html">Dedetização na Liberdade</a>
+            <a href="dedetizacao.html">Dedetização na Bela Vista</a>
+            <a href="dedetizacao.html">Dedetização em Santa Cecília</a>
+            <a href="dedetizacao.html">Dedetização no Bom Retiro</a>
+            <a href="dedetizacao.html">Dedetização na Consolação</a>
+            <a href="dedetizacao.html">Dedetização no Cambuci</a>
+            <a href="dedetizacao.html">Dedetização na Mooca</a>
+            <a href="dedetizacao.html">Dedetização no Brás</a>
+            <a href="dedetizacao.html">Dedetização na Barra Funda</a>
+            <a href="dedetizacao.html">Dedetização em Perdizes</a>
+            <a href="dedetizacao.html">Dedetização em Pinheiros</a>
+            <a href="dedetizacao.html">Dedetização em Vila Madalena</a>
+            <a href="dedetizacao.html">Dedetização em Itaim Bibi</a>
+            <a href="dedetizacao.html">Dedetização em Moema</a>
+            <a href="dedetizacao.html">Dedetização na Vila Mariana</a>
+            <a href="dedetizacao.html">Dedetização na Aclimação</a>
+            <a href="dedetizacao.html">Dedetização no Ipiranga</a>
+            <a href="dedetizacao.html">Dedetização no Belém</a>
+            <a href="dedetizacao.html">Dedetização no Tatuapé</a>
+            <a href="dedetizacao.html">Dedetização na Vila Prudente</a>
+            <a href="dedetizacao.html">Dedetização na Santa Efigênia</a>
+            <a href="dedetizacao.html">Dedetização na Vila Buarque</a>
+            <a href="dedetizacao.html">Dedetização no Ibirapuera</a>
+            <a href="dedetizacao.html">Dedetização no Jardins</a>
+            <a href="dedetizacao.html">Dedetização em Indianópolis</a>
+            <a href="dedetizacao.html">Dedetização na Vila Olímpia</a>
+            <a href="dedetizacao.html">Dedetização na Chácara Inglesa</a>
+            <a href="dedetizacao.html">Dedetização no Cidade Jardim</a>
+            <a href="dedetizacao.html">Dedetização no Brooklin</a>
+            <a href="dedetizacao.html">Dedetização na Vila Uberabinha</a>
+            <a href="dedetizacao.html">Dedetização no Campo Belo</a>
+            <a href="dedetizacao.html">Dedetização no Jardim Europa</a>
+            <a href="dedetizacao.html">Dedetização no Jardim Paulista</a>
+            <a href="dedetizacao.html">Dedetização na Lapa</a>
+            <a href="dedetizacao.html">Dedetização no Alto da Lapa</a>
+            <a href="cupim-madeira-seca.html">Descupinização na Sé</a>
+            <a href="cupim-madeira-seca.html">Descupinização na República</a>
+            <a href="cupim-madeira-seca.html">Descupinização na Liberdade</a>
+            <a href="cupim-madeira-seca.html">Descupinização na Bela Vista</a>
+            <a href="cupim-madeira-seca.html">Descupinização em Santa Cecília</a>
+            <a href="cupim-madeira-seca.html">Descupinização no Bom Retiro</a>
+            <a href="cupim-madeira-seca.html">Descupinização na Consolação</a>
+            <a href="cupim-madeira-seca.html">Descupinização no Cambuci</a>
+            <a href="cupim-madeira-seca.html">Descupinização na Mooca</a>
+            <a href="cupim-madeira-seca.html">Descupinização no Brás</a>
+            <a href="cupim-madeira-seca.html">Descupinização na Barra Funda</a>
+            <a href="cupim-madeira-seca.html">Descupinização em Perdizes</a>
+            <a href="cupim-madeira-seca.html">Descupinização em Pinheiros</a>
+            <a href="cupim-madeira-seca.html">Descupinização em Vila Madalena</a>
+            <a href="cupim-madeira-seca.html">Descupinização em Itaim Bibi</a>
+            <a href="cupim-madeira-seca.html">Descupinização em Moema</a>
+            <a href="cupim-madeira-seca.html">Descupinização na Vila Mariana</a>
+            <a href="cupim-madeira-seca.html">Descupinização na Aclimação</a>
+            <a href="cupim-madeira-seca.html">Descupinização no Ipiranga</a>
+            <a href="cupim-madeira-seca.html">Descupinização no Belém</a>
+            <a href="cupim-madeira-seca.html">Descupinização no Tatuapé</a>
+            <a href="cupim-madeira-seca.html">Descupinização na Vila Prudente</a>
+            <a href="cupim-madeira-seca.html">Descupinização na Santa Efigênia</a>
+            <a href="cupim-madeira-seca.html">Descupinização na Vila Buarque</a>
+            <a href="cupim-madeira-seca.html">Descupinização no Ibirapuera</a>
+            <a href="cupim-madeira-seca.html">Descupinização no Jardins</a>
+            <a href="cupim-madeira-seca.html">Descupinização em Indianópolis</a>
+            <a href="cupim-madeira-seca.html">Descupinização na Vila Olímpia</a>
+            <a href="cupim-madeira-seca.html">Descupinização na Chácara Inglesa</a>
+            <a href="cupim-madeira-seca.html">Descupinização no Cidade Jardim</a>
+            <a href="cupim-madeira-seca.html">Descupinização no Brooklin</a>
+            <a href="cupim-madeira-seca.html">Descupinização na Vila Uberabinha</a>
+            <a href="cupim-madeira-seca.html">Descupinização no Campo Belo</a>
+            <a href="cupim-madeira-seca.html">Descupinização no Jardim Europa</a>
+            <a href="cupim-madeira-seca.html">Descupinização no Jardim Paulista</a>
+            <a href="cupim-madeira-seca.html">Descupinização na Lapa</a>
+            <a href="cupim-madeira-seca.html">Descupinização no Alto da Lapa</a>
+      </div>
+    </div>
+
     <div class="footer-bottom">
       <p>&copy; 2025 Protect Insect. Todos os direitos reservados. Empresa especializada em controle de pragas urbanas.</p>
     </div>

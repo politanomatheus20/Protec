@@ -77,59 +77,14 @@ document.addEventListener('click', (e) => {
 });
 
 // =============================================
-// SMOOTH NAVIGATION & MODALS
+// SMOOTH NAVIGATION (in-page anchors)
 // =============================================
-const modalOverlay = document.getElementById('main-modal');
-const modalBodyContent = document.getElementById('modal-body-content');
-
-function openModal(id) {
-  const contentEl = document.getElementById(id);
-  if (!contentEl) return;
-  
-  const container = contentEl.querySelector('.section-container') || contentEl;
-  modalBodyContent.innerHTML = container.innerHTML;
-  
-  // Trigger any reveal animations inside modal immediately
-  modalBodyContent.querySelectorAll('[class*="scroll-reveal"], .reveal-title').forEach(el => {
-    el.style.opacity = '1';
-    el.style.transform = 'none';
-  });
-
-  modalOverlay.classList.add('active');
-  document.body.style.overflow = 'hidden'; // Prevent background scrolling
-  
-  cupimDropdown.classList.remove('open');
-  hamburger.classList.remove('open');
-  navLinksEl.classList.remove('open');
-  navOverlay.classList.remove('active');
-}
-
-function closeModal() {
-  modalOverlay.classList.remove('active');
-  document.body.style.overflow = '';
-  setTimeout(() => { modalBodyContent.innerHTML = ''; }, 400);
-}
-
-modalOverlay.addEventListener('click', (e) => {
-  if (e.target === modalOverlay) closeModal();
-});
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && modalOverlay.classList.contains('active')) closeModal();
-});
-
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     const href = this.getAttribute('href');
     if (href && href.length > 1) {
       const target = document.querySelector(href);
       if (target) {
-        // Se for um link para uma seção de praga (que agora é modal), abre o modal
-        if (target.classList.contains('pest-section')) {
-          e.preventDefault();
-          openModal(target.id);
-          return;
-        }
-        // Senão faz scroll suave
         e.preventDefault();
         const top = target.getBoundingClientRect().top + window.scrollY - 80;
         window.scrollTo({ top, behavior: 'smooth' });
@@ -166,8 +121,7 @@ const revealObserver = new IntersectionObserver((entries) => {
 revealEls.forEach(el => revealObserver.observe(el));
 
 // =============================================
-// HERO ENTRANCE — staggered slide-in, timed to start
-// the moment the splash screen clears (not behind it)
+// HERO ENTRANCE — staggered slide-in on page load
 // =============================================
 function revealHero() {
   const heroEls = document.querySelectorAll('.hero-content .hero-reveal');
@@ -219,37 +173,6 @@ function revealHero() {
 })();
 
 // =============================================
-// MAGNETIC HOVER ON CARDS (subtle tilt)
-// =============================================
-document.querySelectorAll('.pest-card').forEach(card => {
-  card.addEventListener('mousemove', (e) => {
-    const rect = card.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width  - 0.5) * 7;
-    const y = ((e.clientY - rect.top)  / rect.height - 0.5) * 7;
-    card.style.transform     = `perspective(900px) rotateY(${x}deg) rotateX(${-y}deg) translateY(-6px)`;
-    card.style.transition    = 'box-shadow 0.2s, border-color 0.35s';
-  });
-
-  card.addEventListener('mouseleave', () => {
-    card.style.transform  = '';
-    card.style.transition = 'transform 0.55s cubic-bezier(0.4,0,0.2,1), box-shadow 0.35s, border-color 0.35s';
-  });
-});
-
-// =============================================
-// SERVICE CARD FLIP – tap-to-flip on touch devices
-// (desktop/mouse relies on the CSS :hover flip)
-// =============================================
-if (!window.matchMedia('(hover: hover)').matches) {
-  document.querySelectorAll('.service-card').forEach(card => {
-    card.addEventListener('click', (e) => {
-      if (e.target.closest('.service-card-btn')) return;
-      card.classList.toggle('flipped');
-    });
-  });
-}
-
-// =============================================
 // FAQ ACCORDION
 // =============================================
 document.querySelectorAll('.faq-item').forEach(item => {
@@ -265,9 +188,11 @@ document.querySelectorAll('.faq-item').forEach(item => {
 // WHATSAPP FLOAT OPACITY
 // =============================================
 const waFloat = document.getElementById('whatsapp-float');
-window.addEventListener('scroll', () => {
-  waFloat.style.opacity = window.scrollY > 300 ? '1' : '0.72';
-}, { passive: true });
+if (waFloat) {
+  window.addEventListener('scroll', () => {
+    waFloat.style.opacity = window.scrollY > 300 ? '1' : '0.72';
+  }, { passive: true });
+}
 
 // =============================================
 // FORM – redirect to WhatsApp
@@ -312,8 +237,13 @@ function handleFormSubmit(e) {
   }, 700);
 }
 
-function showNotification(msg, type) {
-  document.querySelector('.form-notification')?.remove();
+let notifStyleInjected = false;
+
+function showNotification(msg, type, container) {
+  const target = container || document.getElementById('contact-form');
+  if (!target) return;
+
+  target.querySelector('.form-notification')?.remove();
 
   const el = document.createElement('div');
   el.className = 'form-notification';
@@ -332,11 +262,14 @@ function showNotification(msg, type) {
     animation: notifIn 0.35s cubic-bezier(0.4,0,0.2,1);
   `;
 
-  const styleTag = document.createElement('style');
-  styleTag.textContent = `@keyframes notifIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }`;
-  document.head.appendChild(styleTag);
+  if (!notifStyleInjected) {
+    const styleTag = document.createElement('style');
+    styleTag.textContent = `@keyframes notifIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }`;
+    document.head.appendChild(styleTag);
+    notifStyleInjected = true;
+  }
 
-  document.getElementById('contact-form').appendChild(el);
+  target.appendChild(el);
   setTimeout(() => el.remove(), 5000);
 }
 
@@ -355,24 +288,80 @@ if (telInput) {
 }
 
 // =============================================
-// ACTIVE NAV HIGHLIGHT ON SCROLL
+// ACTIVE NAV HIGHLIGHT ON SCROLL (home page only —
+// the 4 service pages hardcode their own active link)
 // =============================================
-const navSections = ['inicio','servicos','madeira-seca','cupim-solo','desratizacao','dedetizacao','contato'];
+if (document.body.dataset.page === 'home') {
+  const navSections = ['inicio', 'servicos', 'area-atendimento', 'faq', 'contato'];
 
-const navObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting) return;
-    const id = entry.target.id;
-    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-    const activeLink = document.querySelector(`.nav-link[href="#${id}"]`);
-    if (activeLink) activeLink.classList.add('active');
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const id = entry.target.id;
+      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+      const activeLink = document.querySelector(`.nav-link[href="#${id}"]`);
+      if (activeLink) activeLink.classList.add('active');
+    });
+  }, { threshold: 0.35 });
+
+  navSections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) navObserver.observe(el);
   });
-}, { threshold: 0.35 });
+}
 
-navSections.forEach(id => {
-  const el = document.getElementById(id);
-  if (el) navObserver.observe(el);
-});
+// =============================================
+// LIGHTBOX GALLERY (pest photo grids)
+// =============================================
+(function initLightbox() {
+  const overlay = document.getElementById('lightbox');
+  if (!overlay) return;
+  const imgEl    = document.getElementById('lightbox-img');
+  const closeBtn = document.getElementById('lightbox-close');
+  const prevBtn  = document.getElementById('lightbox-prev');
+  const nextBtn  = document.getElementById('lightbox-next');
+
+  let currentGroup = [];
+  let currentIndex = 0;
+
+  function show(index) {
+    currentIndex = (index + currentGroup.length) % currentGroup.length;
+    const img = currentGroup[currentIndex];
+    imgEl.src = img.src;
+    imgEl.alt = img.alt;
+  }
+
+  function open(group, startIndex) {
+    currentGroup = group;
+    show(startIndex);
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function close() {
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.pest-photo-grid').forEach(grid => {
+    const imgs = Array.from(grid.querySelectorAll('img'));
+    imgs.forEach((img, i) => {
+      const photo = img.closest('.pest-photo') || img;
+      photo.addEventListener('click', () => open(imgs, i));
+    });
+  });
+
+  closeBtn.addEventListener('click', close);
+  prevBtn.addEventListener('click', () => show(currentIndex - 1));
+  nextBtn.addEventListener('click', () => show(currentIndex + 1));
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
+  document.addEventListener('keydown', (e) => {
+    if (!overlay.classList.contains('active')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') show(currentIndex - 1);
+    if (e.key === 'ArrowRight') show(currentIndex + 1);
+  });
+})();
 
 // =============================================
 // SCROLL PROGRESS BAR
@@ -397,43 +386,8 @@ navSections.forEach(id => {
   }, { passive: true });
 })();
 
-// =============================================
-// CARD CAROUSEL LOGIC
-// =============================================
-document.querySelectorAll('.card-carousel').forEach(carousel => {
-  const slides = carousel.querySelectorAll('.carousel-slide');
-  if (slides.length <= 1) return; // No need to slide if only 1 image
-  
-  let currentIdx = 0;
-  setInterval(() => {
-    slides[currentIdx].classList.remove('active');
-    currentIdx = (currentIdx + 1) % slides.length;
-    slides[currentIdx].classList.add('active');
-  }, 3000 + Math.random() * 1000); // randomize slightly so they don't all change at exact same ms
-});
-
 console.log('%cPROTECT INSECT', 'color:#FF7A00;font-size:1.4rem;font-weight:bold;font-family:Oswald');
-console.log('%cSite carregado com sucesso. (v3 - Modals)', 'color:#FF9933;font-size:0.85rem');
+console.log('%cSite carregado com sucesso. (v4 - Multi-página)', 'color:#FF9933;font-size:0.85rem');
 
-// SPLASH SCREEN LOGIC
-document.addEventListener('DOMContentLoaded', () => {
-  const splash = document.getElementById('splash-screen');
-  if (splash) {
-    // Travar scroll durante a animação
-    document.body.style.overflow = 'hidden';
-
-    // Tempo total de visualização antes de sumir (escudo + digitação + pausa curta)
-    setTimeout(() => {
-      splash.classList.add('fade-out');
-      document.body.style.overflow = 'auto'; // Destravar scroll
-      revealHero(); // Hero entra assim que a splash começa a sair, nunca escondido atrás dela
-
-      // Remover do DOM após a transição (800ms)
-      setTimeout(() => {
-        splash.remove();
-      }, 800);
-    }, 1750); // ~1.15s de animação + 0.6s de pausa
-  } else {
-    revealHero();
-  }
-});
+// HERO REVEAL ON LOAD
+document.addEventListener('DOMContentLoaded', revealHero);
