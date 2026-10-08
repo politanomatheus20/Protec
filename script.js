@@ -166,33 +166,6 @@ const revealObserver = new IntersectionObserver((entries) => {
 revealEls.forEach(el => revealObserver.observe(el));
 
 // =============================================
-// SECTION COUNTER ANIMATION
-// =============================================
-function animateCounter(el, target, duration) {
-  let start = 0;
-  const step = target / (duration / 16);
-
-  const run = () => {
-    start += step;
-    if (start >= target) {
-      el.textContent = target;
-      return;
-    }
-    el.textContent = Math.floor(start);
-    requestAnimationFrame(run);
-  };
-  requestAnimationFrame(run);
-}
-
-const counters = document.querySelectorAll('.stat-number');
-
-function startHeroCounters() {
-  counters.forEach(el => {
-    animateCounter(el, parseInt(el.getAttribute('data-count')), 2200);
-  });
-}
-
-// =============================================
 // HERO ENTRANCE — staggered slide-in, timed to start
 // the moment the splash screen clears (not behind it)
 // =============================================
@@ -202,11 +175,6 @@ function revealHero() {
   heroEls.forEach((el, i) => {
     setTimeout(() => el.classList.add('in-view'), i * STEP);
   });
-
-  // Numbers start counting once the stats row has slid into place
-  const statsIndex = Array.from(heroEls).findIndex(el => el.classList.contains('hero-stats'));
-  const statsDelay = statsIndex >= 0 ? statsIndex * STEP : 0;
-  setTimeout(startHeroCounters, statsDelay + 850);
 }
 
 // =============================================
@@ -335,7 +303,7 @@ function handleFormSubmit(e) {
   btn.disabled = true;
 
   setTimeout(() => {
-    window.open(`https://wa.me/5511910081131?text=${encodeURIComponent(msg)}`, '_blank');
+    window.open(`https://wa.me/5511972228090?text=${encodeURIComponent(msg)}`, '_blank');
     btn.textContent = 'Enviar Mensagem pelo WhatsApp';
     btn.style.opacity = '1';
     btn.disabled = false;

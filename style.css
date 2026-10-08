@@ -453,10 +453,6 @@ nav, section, footer { position: relative; z-index: 1; }
   font-weight: 600;
   letter-spacing: 0.06em;
   color: var(--white);
-  background: rgba(141,198,65,0.1);
-  border: 1px solid rgba(141,198,65,0.25);
-  padding: 8px 20px;
-  border-radius: 50px;
   margin-bottom: 28px;
   text-transform: uppercase;
 }
