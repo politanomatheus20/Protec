@@ -49,7 +49,7 @@
   <nav class="navbar" id="navbar">
     <div class="nav-container">
       <a href="#inicio" class="nav-logo">
-        <img src="images/logo_oficial.png" alt="Protect Insect" class="logo-img" style="height: 60px; filter: invert(1) grayscale(1) brightness(2); mix-blend-mode: screen; transform: scale(1.5) translateY(-8px);" />
+        <img src="images/logo_oficial_crop.png" alt="Protect Insect" class="logo-img" style="height: 50px; filter: invert(1) grayscale(1) brightness(2); mix-blend-mode: screen;" />
       </a>
       <button class="hamburger" id="hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -91,12 +91,8 @@
 
   <!-- HERO SECTION -->
   <section class="hero" id="inicio">
-    <!-- Vídeo temporário (banco gratuito, licença livre, sem necessidade de atribuição) —
-         trocar videos/hero-cupim-bg.mp4 pela filmagem real da empresa assim que disponível -->
-    <div class="hero-video-bg">
-      <video autoplay muted loop playsinline poster="images/cupim_novo_1.jpg">
-        <source src="videos/hero-cupim-bg.mp4" type="video/mp4" />
-      </video>
+    <div class="hero-bg-image">
+      <img src="images/hero-fundo-cupim.jpg" alt="" aria-hidden="true" />
     </div>
     <div class="hero-video-overlay"></div>
     <div class="hero-bg-lines">
@@ -107,35 +103,85 @@
       <div class="bg-line"></div>
     </div>
     <div class="hero-content">
-      <div class="hero-badge hero-reveal">Atendimento 24h Rápido e Eficiente</div>
+      <div class="hero-badge hero-reveal">Seu Imóvel Livre de Pragas</div>
       <h1 class="hero-title hero-reveal">
-        Proteção Total Contra<br />
-        <span class="highlight-text">Cupins, Pragas e Roedores</span>
+        Proteção <span class="highlight-text">Completa</span> para
+        <span class="highlight-text">sua Casa e seu Patrimônio</span>
       </h1>
       <p class="hero-subtitle hero-reveal">
-        Somos especialistas em <strong>descupinização</strong>, <strong>dedetização</strong> e <strong>desratização</strong>.
-        Protegemos seu imóvel com produtos de alta qualidade e tecnologia avançada.
+        <strong>Especialistas em pragas urbanas</strong>, referência em proteção, tecnologia e eficiência.
+        Profissionais altamente treinados e produtos de alta tecnologia para proteger seu patrimônio e sua família.
       </p>
-      <div class="hero-stats hero-reveal">
-        <div class="stat-item">
-          <span class="stat-number">4500</span><span class="stat-plus">+</span>
-          <span class="stat-label">Clientes Atendidos</span>
+      <div class="hero-stats hero-stats-badges hero-reveal">
+        <div class="stat-badge">
+          <span class="stat-badge-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="9" cy="8" r="3.2" stroke="currentColor" stroke-width="1.6"/>
+              <path d="M3.5 20v-1.5A4.2 4.2 0 0 1 7.7 14.3h2.6a4.2 4.2 0 0 1 4.2 4.2V20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M15.3 5.3a3.2 3.2 0 0 1 0 6.1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M16.3 14.4a4.2 4.2 0 0 1 3.7 4.2V20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="stat-badge-text"><strong>+4.500</strong>Clientes Atendidos</span>
         </div>
         <div class="stat-divider"></div>
-        <div class="stat-item">
-          <span class="stat-number">18</span><span class="stat-plus">+</span>
-          <span class="stat-label">Anos de Experiência</span>
+        <div class="stat-badge">
+          <span class="stat-badge-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="8.3" r="5.3" stroke="currentColor" stroke-width="1.6"/>
+              <text x="12" y="10.6" text-anchor="middle" font-size="6.5" font-weight="700" fill="currentColor" font-family="Oswald, sans-serif">18</text>
+              <path d="M8.3 13 6.3 21l5.7-3.3L17.7 21l-2-8" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="stat-badge-text"><strong>18</strong>Anos de Experiência</span>
         </div>
         <div class="stat-divider"></div>
-        <div class="stat-item">
-          <span class="stat-number">100</span><span class="stat-plus">%</span>
-          <span class="stat-label">Satisfação Garantida</span>
+        <div class="stat-badge">
+          <span class="stat-badge-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2.5l7.5 3V11c0 5.2-3.2 9-7.5 10.5C7.7 20 4.5 16.2 4.5 11V5.5l7.5-3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+              <path d="M8.8 12.2l2.2 2.2 4.2-4.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="stat-badge-text"><strong>Até 5 anos</strong>de Garantia</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-badge">
+          <span class="stat-badge-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 10V20H4V10H8Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+              <path d="M8 10L11.5 3.5C12.5 3.5 13.5 4.3 13.5 5.5V8.5H18.2C19.4 8.5 20.3 9.6 20 10.7L18.4 18.2C18.2 19.3 17.2 20 16.1 20H8" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="stat-badge-text"><strong>100%</strong>Satisfação Garantida</span>
         </div>
       </div>
       <div class="hero-buttons hero-reveal">
         <a href="https://wa.me/5511972228090?text=Olá! Gostaria de fazer um orçamento." target="_blank" class="btn btn-primary btn-glow">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M7 3h7l4 4v14H7V3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M14 3v4h4" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M9.5 13h5M9.5 16.5h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
           Solicitar Orçamento Grátis
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </a>
+      </div>
+      <div class="hero-trust-row hero-reveal">
+        <div class="trust-row-item">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.5"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Atendimento em 24h</span>
+        </div>
+        <div class="trust-row-item">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.4" stroke="currentColor" stroke-width="1.5"/></svg>
+          <span>Atendemos toda São Paulo</span>
+        </div>
+        <div class="trust-row-item">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.5l7.5 3V11c0 5.2-3.2 9-7.5 10.5C7.7 20 4.5 16.2 4.5 11V5.5l7.5-3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M8.8 12.2l2.2 2.2 4.2-4.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Serviço seguro e certificado</span>
+        </div>
       </div>
     </div>
 
