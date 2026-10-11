@@ -193,10 +193,13 @@ nav, section, footer { position: relative; z-index: 1; }
   color: var(--white);
 }
 .mobile-action-btn svg { width: 18px; height: 18px; }
-.mobile-action-call { background: rgba(255,85,0,0.12); }
-.mobile-action-call svg { stroke: var(--primary); }
-.mobile-action-whats { background: rgba(37,211,102,0.14); border-left: 1px solid var(--border); }
-.mobile-action-whats svg { fill: var(--whatsapp); width: 20px; height: 20px; }
+.mobile-action-call { background: rgba(232,67,27,0.14); }
+.mobile-action-call svg { stroke: #E8431B; }
+.mobile-action-whats {
+  background: linear-gradient(180deg, #A4E97B 0%, #64BA4A 100%);
+  border-left: 1px solid rgba(0,0,0,0.15);
+}
+.mobile-action-whats svg { fill: var(--white); width: 20px; height: 20px; }
 
 @media (max-width: 640px) {
   .mobile-action-bar { display: flex; }
