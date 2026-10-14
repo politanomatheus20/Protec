@@ -2018,7 +2018,8 @@ nav, section, footer { position: relative; z-index: 1; }
   .stat-badge-icon svg { width: 17px; height: 17px; }
   .stat-badge-text { white-space: normal; text-align: center; font-size: 0.66rem; }
   .stat-badge-text strong { font-size: 0.85rem; }
-  .hero-buttons { justify-content: center; position: relative; z-index: 2; margin-top: -40px; }
+  .hero-buttons { justify-content: center; }
+  .hero > .hero-content .hero-buttons { position: relative; z-index: 2; margin-top: -40px; }
   /* Linha de confiança: uma única fileira com os 3 itens, ícone em cima e texto em
      duas linhas embaixo, separados por divisórias finas — igual à referência. */
   .hero-trust-row {
